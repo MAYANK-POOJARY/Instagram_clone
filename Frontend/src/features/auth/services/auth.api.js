@@ -1,3 +1,5 @@
+// This file handles the communication between the backend and frontend
+
 import axios from 'axios'
 
 const api = axios.create({
@@ -6,34 +8,20 @@ const api = axios.create({
 })
 
 export async function login(username, password){
-    try{
-        const reponse = await api.post("/api/auth/login",
-      {
-        username,
-        password,
-      })
-      return reponse.data
-    }catch(err){
-        throw err
-    }
+    const response = await api.post('/api/auth/login', {
+        username, password
+    });
+    return response.data
 }
 
 export async function register(username, email, password){
-    try{
-        const reponse = await api.post('/api/auth/register',{
-            username, email, password
-        })
-        return reponse.data
-    }catch(err){
-        throw err
-    }
+    const response = await api.post('/api/auth/register', {
+        username, email, password
+    })
+    return response.data
 }
 
 export async function getMe(){
-    try{
         const response = await api.get('/api/auth/get-me');
         return response.data
-    }catch(err){
-        throw err
-    }
 }

@@ -19,11 +19,8 @@ const Register = () => {
   const SubmitHandler = async(e) => {
     e.preventDefault();
 
-    handleRegister(username, email, password)
-    .then(res => {
-        console.log(res.data);
-        navigate('/')
-    })
+    await handleRegister(username, email, password)
+    navigate('/')
   };
   return (
     <main>
@@ -54,9 +51,9 @@ const Register = () => {
             name="password"
             placeholder="Enter your password"
           />
-          <button>submit</button>
+          <button className="button primary-button">submit</button>
         </form>
-        <p>Already have an account ? <Link className="toggleAuthForm" to='/login'>Login</Link></p>
+        <p>Already have an account ? <Link to='/login'>Login</Link></p>
       </div>
     </main>
   );
